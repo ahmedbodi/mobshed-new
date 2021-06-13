@@ -1153,14 +1153,13 @@ bool ReadRawBlockFromDisk(std::vector<uint8_t>& block, const CBlockIndex* pindex
 
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 {
-    int halvings = nHeight / consensusParams.nSubsidyHalvingInterval;
-    // Force block reward to zero when right shift is undefined.
-    if (halvings >= 64)
-        return 0;
+    CAmount nSubsidy = 5000 * COIN;
+    if(nHeight == 2)
+    {
+        nSubsidy =  900000000 * COIN; //premine
+    }
 
-    CAmount nSubsidy = 50 * COIN;
-    // Subsidy is cut in half every 210,000 blocks which will occur approximately every 4 years.
-    nSubsidy >>= halvings;
+    nSubsidy >>= (nHeight / consensusParams.nSubsidyHalvingInterval); // Mobshed: 4200000 blocks in ~2 years
     return nSubsidy;
 }
 
@@ -1730,7 +1729,7 @@ static unsigned int GetBlockScriptFlags(const CBlockIndex* pindex, const Consens
     unsigned int flags = SCRIPT_VERIFY_NONE;
     
     // Start enforcing P2SH (BIP16)
-    if (pindex->nHeight >= consensusparams.BIP16Height) {
+    if (pindex->nTime >= 1349049600) {
         flags |= SCRIPT_VERIFY_P2SH;
     }
 
