@@ -1,6 +1,6 @@
 sudo: required
-dist: xenial
-os: xenial
+dist: bionic
+os: linux
 language: minimal
 cache:
   ccache: true
