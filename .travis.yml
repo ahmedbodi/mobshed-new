@@ -3,6 +3,7 @@ dist: xenial
 os: xenial
 language: minimal
 cache:
+  ccache: true
   directories:
     - depends/built
     - depends/sdk-sources
@@ -16,6 +17,7 @@ env:
     - CCACHE_SIZE=100M
     - CCACHE_TEMPDIR=/tmp/.ccache-temp
     - CCACHE_COMPRESS=1
+    - CCACHE_DIR=$HOME/.ccache
     - BASE_OUTDIR=$TRAVIS_BUILD_DIR/out
     - SDK_URL=https://bitcoincore.org/depends-sources/sdks
     - WINEDEBUG=fixme-all
