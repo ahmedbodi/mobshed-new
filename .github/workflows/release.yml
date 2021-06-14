@@ -5,7 +5,6 @@ jobs:
   build_depends:
     name: Depends-${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
-    needs: lint
     env:
       APT_BASE: ccache
       SDK_URL: https://bitcoincore.org/depends-sources/sdks
@@ -100,7 +99,7 @@ jobs:
   build_wallet:
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
-    needs: [lint, build_depends]
+    needs: [build_depends]
     env:
       APT_BASE: ccache
       CCACHE_DIR: ${{ github.workspace }}/.ccache
