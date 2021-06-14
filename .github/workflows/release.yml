@@ -138,7 +138,7 @@ jobs:
             os: ubuntu-18.04
             host: x86_64-w64-mingw32
             apt_get: python3 nsis g++-mingw-w64-x86-64 wine-binfmt wine64
-            unit_tests: true
+            unit_tests: false
             functional_tests: false
             goal: deploy
             BITCOIN_CONFIG: "--with-gui=auto --enable-reduce-exports --disable-online-rust"
@@ -147,8 +147,8 @@ jobs:
             os: ubuntu-18.04
             host: x86_64-unknown-linux-gnu
             apt_get: python3-zmq qtbase5-dev qttools5-dev-tools libqt5svg5-dev libqt5charts5-dev libqrencode-dev protobuf-compiler libdbus-1-dev libharfbuzz-dev libprotobuf-dev
-            unit_tests: true
-            functional_tests: true
+            unit_tests: false
+            functional_tests: false
             goal: install
             test_runner_extra: "--coverage --all"
             BITCOIN_CONFIG: "--enable-zmq --with-gui=qt5 --enable-glibc-back-compat --enable-reduce-exports --disable-online-rust"
@@ -158,7 +158,7 @@ jobs:
             host: x86_64-unknown-linux-gnu
             apt_get: python3-zmq
             unit_tests: false
-            functional_tests: true
+            functional_tests: false
             goal: install
             test_runner_extra: "--legacywallet"
             BITCOIN_CONFIG: "--enable-zmq --with-gui=no --enable-glibc-back-compat --enable-reduce-exports --disable-online-rust"
@@ -167,8 +167,8 @@ jobs:
             os: ubuntu-16.04
             host: x86_64-unknown-linux-gnu
             apt_get: python3-zmq qtbase5-dev qttools5-dev-tools libqt5svg5-dev libssl-dev libevent-dev bsdmainutils libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev libdb5.3++-dev libminiupnpc-dev libzmq3-dev libprotobuf-dev protobuf-compiler libqrencode-dev libgmp-dev libsodium-dev cargo
-            unit_tests: true
-            functional_tests: true
+            unit_tests: false
+            functional_tests: false
             no_depends: 1
             goal: install
             test_runner_extra: "--all"
@@ -178,7 +178,7 @@ jobs:
             os: ubuntu-18.04
             host: x86_64-unknown-linux-gnu
             apt_get: python3-zmq qtbase5-dev qttools5-dev-tools libqt5svg5-dev libqt5charts5-dev libssl1.0-dev libevent-dev bsdmainutils libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev libdb5.3++-dev libminiupnpc-dev libzmq3-dev libprotobuf-dev protobuf-compiler libqrencode-dev libgmp-dev libsodium-dev cargo
-            unit_tests: true
+            unit_tests: false
             no_depends: 1
             goal: install
             BITCOIN_CONFIG: "--enable-zmq --with-incompatible-bdb --with-gui=qt5 CPPFLAGS=-DDEBUG_LOCKORDER"
