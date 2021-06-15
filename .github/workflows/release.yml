@@ -263,8 +263,8 @@ jobs:
           echo ::group::Zip-Artifacts
           if [ -n "${{ matrix.config.OSX_SDK }}"]; then
             mkdir -p ${OUTDIR_PATH};
-            cp -rf Quebecoin-Core.dmg ${OUTDIR};
-            cp -rf Quebecoin-Qt.app ${OUTDIR};
+            cp -rf Quebecoin-Core.dmg ${OUTDIR_PATH};
+            cp -rf Quebecoin-Qt.app ${OUTDIR_PATH};
           fi
           cd $GITHUB_WORKSPACE && tar -zcvf mobshed-${{ matrix.config.host }}.tar.gz ${OUTDIR_PATH}
           echo ::endgroup::
