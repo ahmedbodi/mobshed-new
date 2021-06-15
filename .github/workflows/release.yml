@@ -260,11 +260,14 @@ jobs:
             test/functional/test_runner.py --combinedlogslen=4000 ${{ matrix.config.test_runner_extra }}
             echo ::endgroup::
           fi
+          echo ::group::Zip-Artifacts
+          cd $GITHUB_WORKSPACE && tar -zcvf mobshed-$HOST.tar.gz ${OUTDIR_PATH}
+          echo ::endgroup::
 
       - name: Save Linux Build Artifacts
         uses: actions/upload-artifact@v2
         if: matrix.config.type == 'linux'
         with:
           name: release
-          path: ${{ github.workspace }}/${{ github.run_number }}-${{ matrix.config.host }}/**/*
+          path: ${{ github.workspace }}/mobshed-${{ matrix.config.host }}.tar.gz
 
