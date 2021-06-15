@@ -232,6 +232,7 @@ jobs:
             sudo update-binfmts --import /usr/share/binfmts/wine
           fi
           OUTDIR_PATH="$GITHUB_WORKSPACE/$GITHUB_RUN_NUMBER-${{ matrix.config.host }}"
+          if [ -n "${{ matrix.config.OSX_SDK }}" ]; then mkdir -p ${OUTDIR_PATH}/bin; fi
           BITCOIN_CONFIG_ALL="--disable-dependency-tracking --prefix=$GITHUB_WORKSPACE/depends/${{ matrix.config.host }} --bindir=$OUTDIR_PATH/bin --libdir=$OUTDIR_PATH/lib"
           echo ::group::Autogen
           ./autogen.sh
@@ -261,7 +262,9 @@ jobs:
             echo ::endgroup::
           fi
           echo ::group::Zip-Artifacts
-          if [ -n "${{ matrix.config.OSX_SDK }}" -a -f depends/sdk-sources/MacOSX${{ matrix.config.OSX_SDK }}.sdk.tar.gz ]; then
+          ls -lah ./
+          echo $(pwd)
+          if [ -n "${{ matrix.config.OSX_SDK }}" ]; then
             mkdir -p ${OUTDIR_PATH};
             ls -lah .
             ls -lah ../
