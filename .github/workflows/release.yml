@@ -107,6 +107,7 @@ jobs:
       CCACHE_COMPRESS: 1
       WINEDEBUG: fixme-all
       BOOST_TEST_RANDOM: 1${{ github.run_id }}
+      TYPE: ${{ matrix.congig.type }}
     defaults:
       run:
         shell: bash
@@ -262,17 +263,25 @@ jobs:
             echo ::endgroup::
           fi
           echo ::group::Zip-Artifacts
-          ls -lah ./
-          echo $(pwd)
-          if [ -n "${{ matrix.config.OSX_SDK }}" ]; then
+          if [ "$TYPE" == "windows" ]; then
+            echo "Windows";
             mkdir -p ${OUTDIR_PATH};
-            ls -lah .
-            ls -lah ../
+            cp -rf ./release ${OUTDIR_PATH};
+          fi
+
+          if [ "$TYPE" == "osx" ]; then
+            echo "OSX";
+            mkdir -p ${OUTDIR_PATH};
+            ls -lah .;
+            ls -lah ../;
             cp -rf $GITHUB_WORKSPACE/Mobshed-Core.dmg ${OUTDIR_PATH};
             cp -rf $GITHUB_WORKSPACE/Mobshed-Qt.app ${OUTDIR_PATH};
           fi
           cd $GITHUB_WORKSPACE && tar -zcvf mobshed-${{ matrix.config.host }}.tar.gz ${OUTDIR_PATH}
           echo ::endgroup::
+
+      - name: Setup upterm session
+        uses: lhotari/action-upterm@v1
 
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
