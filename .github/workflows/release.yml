@@ -249,8 +249,6 @@ jobs:
           echo ::endgroup
           echo ::group::Build
           make -j2 ${{ matrix.config.goal }} || ( echo "Build failure. Verbose build follows." && make ${{ matrix.config.goal }} V=1 ; false )
-          ls -la .
-          ls -la $OUTDIR_PATH
           echo ::endgroup::
           if [ "${{ matrix.config.unit_tests }}" = "true" ]; then
             echo ::group::Unit-Tests
@@ -271,4 +269,4 @@ jobs:
         if: matrix.config.type == 'linux'
         with:
           name: release
-          path: $GITHUB_WORKSPACE/$GITHUB_RUN_NUMBER-${{ matrix.config.host }}
+          path: $GITHUB_WORKSPACE/$GITHUB_RUN_NUMBER-${{ matrix.config.host }}/**/*
