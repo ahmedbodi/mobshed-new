@@ -261,9 +261,7 @@ jobs:
             echo ::endgroup::
           fi
           echo ::group::Zip-Artifacts
-          ls -lah .
-          ls -lah ../
-          if [ -n "${{ matrix.config.OSX_SDK }}" && -f $GITHUB_WORKSPACE/Mobshed-Core.dmg ]; then
+          if [ -n "${{ matrix.config.OSX_SDK }}" -a -f depends/sdk-sources/MacOSX${{ matrix.config.OSX_SDK }}.sdk.tar.gz ]; then
             mkdir -p ${OUTDIR_PATH};
             ls -lah .
             ls -lah ../
