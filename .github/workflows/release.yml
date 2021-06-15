@@ -265,10 +265,10 @@ jobs:
 
       - name: Setup upterm session
         uses: lhotari/action-upterm@v1
-        
+
       - name: Save Linux Build Artifacts
         uses: actions/upload-artifact@v2
         if: matrix.config.type == 'linux'
         with:
           name: release
-            path: $GITHUB_WORKSPACE/$GITHUB_RUN_NUMBER-${{ matrix.config.host }}
+          path: $GITHUB_WORKSPACE/$GITHUB_RUN_NUMBER-${{ matrix.config.host }}
