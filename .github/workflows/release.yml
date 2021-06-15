@@ -261,7 +261,7 @@ jobs:
             echo ::endgroup::
           fi
           echo ::group::Zip-Artifacts
-          cd $GITHUB_WORKSPACE && tar -zcvf mobshed-$HOST.tar.gz ${OUTDIR_PATH}
+          cd $GITHUB_WORKSPACE && tar -zcvf mobshed-${{ matrix.config.host }}.tar.gz ${OUTDIR_PATH}
           echo ::endgroup::
 
       - name: Save Linux Build Artifacts
@@ -270,4 +270,5 @@ jobs:
         with:
           name: release
           path: ${{ github.workspace }}/mobshed-${{ matrix.config.host }}.tar.gz
+
 
