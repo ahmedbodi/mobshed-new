@@ -278,9 +278,6 @@ jobs:
           cd $GITHUB_WORKSPACE && tar -zcvf mobshed-${{ matrix.config.host }}.tar.gz ${OUTDIR_PATH}
           echo ::endgroup::
 
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
-
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
