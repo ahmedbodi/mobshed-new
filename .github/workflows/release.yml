@@ -107,7 +107,7 @@ jobs:
       CCACHE_COMPRESS: 1
       WINEDEBUG: fixme-all
       BOOST_TEST_RANDOM: 1${{ github.run_id }}
-      TYPE: ${{ matrix.congig.type }}
+      TYPE: ${{ matrix.config.type }}
     defaults:
       run:
         shell: bash
