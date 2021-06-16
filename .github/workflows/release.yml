@@ -272,10 +272,8 @@ jobs:
           if [ "$TYPE" == "osx" ]; then
             echo "OSX";
             mkdir -p ${OUTDIR_PATH};
-            ls -lah .;
-            ls -lah ../;
-            cp -rf $GITHUB_WORKSPACE/Mobshed-Core.dmg ${OUTDIR_PATH};
-            cp -rf $GITHUB_WORKSPACE/Mobshed-Qt.app ${OUTDIR_PATH};
+            cp -rf Mobshed-Core.dmg ${OUTDIR_PATH};
+            cp -rf Mobshed-Qt.app ${OUTDIR_PATH};
           fi
           cd $GITHUB_WORKSPACE && tar -zcvf mobshed-${{ matrix.config.host }}.tar.gz ${OUTDIR_PATH}
           echo ::endgroup::
