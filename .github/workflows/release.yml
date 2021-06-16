@@ -158,15 +158,6 @@ jobs:
             BITCOIN_CONFIG: "--enable-zmq --with-gui=qt5 --enable-glibc-back-compat --enable-reduce-exports --disable-online-rust"
             type: linux
 
-          - name: x86_64 Linux  [GOAL:install]  [bionic]  [no unit or functional tests]
-            os: ubuntu-18.04
-            host: x86_64-unknown-linux-gnu
-            apt_get: python3-zmq qtbase5-dev qttools5-dev-tools libqt5svg5-dev libqt5charts5-dev libssl1.0-dev libevent-dev bsdmainutils libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev libdb5.3++-dev libminiupnpc-dev libzmq3-dev libprotobuf-dev protobuf-compiler libqrencode-dev libgmp-dev libsodium-dev cargo
-            unit_tests: false
-            no_depends: 1
-            goal: install
-            BITCOIN_CONFIG: "--enable-zmq --with-incompatible-bdb --with-gui=qt5 CPPFLAGS=-DDEBUG_LOCKORDER"
-            type: linux
 
           - name: macOS 10.10  [GOAL:deploy] [no unit or functional tests]
             os: ubuntu-18.04
